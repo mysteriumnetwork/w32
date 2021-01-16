@@ -1473,17 +1473,17 @@ const (
 )
 
 const (
-	CC_FASTCALL = iota
-	CC_CDECL
-	CC_MSCPASCAL
-	CC_PASCAL = CC_MSCPASCAL
-	CC_MACPASCAL
-	CC_STDCALL
-	CC_FPFASTCALL
-	CC_SYSCALL
-	CC_MPWCDECL
-	CC_MPWPASCAL
-	CC_MAX = CC_MPWPASCAL
+	CC_FASTCALL   = 0
+	CC_CDECL      = 1
+	CC_MSCPASCAL  = 2
+	CC_PASCAL     = 2
+	CC_MACPASCAL  = 3
+	CC_STDCALL    = 4
+	CC_FPFASTCALL = 5
+	CC_SYSCALL    = 6
+	CC_MPWCDECL   = 7
+	CC_MPWPASCAL  = 8
+	CC_MAX        = 9
 )
 
 const (
@@ -2714,9 +2714,9 @@ type DWM_SOURCE_FRAME_SAMPLING int32
 // Flags used by the DwmSetPresentParameters function
 // to specify the frame sampling type
 const (
-	DWM_SOURCE_FRAME_SAMPLING_POINT = iota + 1
-	DWM_SOURCE_FRAME_SAMPLING_COVERAGE
-	DWM_SOURCE_FRAME_SAMPLING_LAST
+	DWM_SOURCE_FRAME_SAMPLING_POINT    = 1
+	DWM_SOURCE_FRAME_SAMPLING_COVERAGE = 2
+	DWM_SOURCE_FRAME_SAMPLING_LAST     = 3
 )
 
 // Flags used by the DWM_THUMBNAIL_PROPERTIES structure to
@@ -2736,10 +2736,10 @@ type DWMFLIP3DWINDOWPOLICY int32
 // Flags used by the DwmSetWindowAttribute function
 // to specify the Flip3D window policy
 const (
-	DWMFLIP3D_DEFAULT = iota + 1
-	DWMFLIP3D_EXCLUDEBELOW
-	DWMFLIP3D_EXCLUDEABOVE
-	DWMFLIP3D_LAST
+	DWMFLIP3D_DEFAULT      = 1
+	DWMFLIP3D_EXCLUDEBELOW = 2
+	DWMFLIP3D_EXCLUDEABOVE = 3
+	DWMFLIP3D_LAST         = 4
 )
 
 // enum-lite implementation for the following constant structure
@@ -2749,10 +2749,10 @@ type DWMNCRENDERINGPOLICY int32
 // Flags used by the DwmSetWindowAttribute function
 // to specify the non-client area rendering policy
 const (
-	DWMNCRP_USEWINDOWSTYLE = iota + 1
-	DWMNCRP_DISABLED
-	DWMNCRP_ENABLED
-	DWMNCRP_LAST
+	DWMNCRP_USEWINDOWSTYLE = 1
+	DWMNCRP_DISABLED       = 2
+	DWMNCRP_ENABLED        = 3
+	DWMNCRP_LAST           = 4
 )
 
 // enum-lite implementation for the following constant structure
@@ -2770,22 +2770,22 @@ type DWMWINDOWATTRIBUTE int32
 // Flags used by the DwmGetWindowAttribute and DwmSetWindowAttribute functions
 // to specify window attributes for non-client rendering
 const (
-	DWMWA_NCRENDERING_ENABLED = iota + 1
-	DWMWA_NCRENDERING_POLICY
-	DWMWA_TRANSITIONS_FORCEDISABLED
-	DWMWA_ALLOW_NCPAINT
-	DWMWA_CAPTION_BUTTON_BOUNDS
-	DWMWA_NONCLIENT_RTL_LAYOUT
-	DWMWA_FORCE_ICONIC_REPRESENTATION
-	DWMWA_FLIP3D_POLICY
-	DWMWA_EXTENDED_FRAME_BOUNDS
-	DWMWA_HAS_ICONIC_BITMAP
-	DWMWA_DISALLOW_PEEK
-	DWMWA_EXCLUDED_FROM_PEEK
-	DWMWA_CLOAK
-	DWMWA_CLOAKED
-	DWMWA_FREEZE_REPRESENTATION
-	DWMWA_LAST
+	DWMWA_NCRENDERING_ENABLED         = 1
+	DWMWA_NCRENDERING_POLICY          = 2
+	DWMWA_TRANSITIONS_FORCEDISABLED   = 3
+	DWMWA_ALLOW_NCPAINT               = 4
+	DWMWA_CAPTION_BUTTON_BOUNDS       = 5
+	DWMWA_NONCLIENT_RTL_LAYOUT        = 6
+	DWMWA_FORCE_ICONIC_REPRESENTATION = 7
+	DWMWA_FLIP3D_POLICY               = 8
+	DWMWA_EXTENDED_FRAME_BOUNDS       = 9
+	DWMWA_HAS_ICONIC_BITMAP           = 10
+	DWMWA_DISALLOW_PEEK               = 11
+	DWMWA_EXCLUDED_FROM_PEEK          = 12
+	DWMWA_CLOAK                       = 13
+	DWMWA_CLOAKED                     = 14
+	DWMWA_FREEZE_REPRESENTATION       = 15
+	DWMWA_LAST                        = 16
 )
 
 const (
@@ -3476,54 +3476,54 @@ const INVALID_HANDLE_VALUE = ^HANDLE(0)
 
 // STORAGE_BUS_TYPE values
 const (
-	BusTypeUnknown = iota
-	BusTypeScsi
-	BusTypeAtapi
-	BusTypeAta
-	BusType1394
-	BusTypeSsa
-	BusTypeFibre
-	BusTypeUsb
-	BusTypeRAID
-	BusTypeiScsi
-	BusTypeSas
-	BusTypeSata
-	BusTypeSd
-	BusTypeMmc
-	BusTypeVirtual
-	BusTypeFileBackedVirtual
-	BusTypeSpaces
-	BusTypeNvme
-	BusTypeMax
-	BusTypeMaxReserved = 0x7F
+	BusTypeUnknown           = 0
+	BusTypeScsi              = 1
+	BusTypeAtapi             = 2
+	BusTypeAta               = 3
+	BusType1394              = 4
+	BusTypeSsa               = 5
+	BusTypeFibre             = 6
+	BusTypeUsb               = 7
+	BusTypeRAID              = 8
+	BusTypeiScsi             = 9
+	BusTypeSas               = 10
+	BusTypeSata              = 11
+	BusTypeSd                = 12
+	BusTypeMmc               = 13
+	BusTypeVirtual           = 14
+	BusTypeFileBackedVirtual = 15
+	BusTypeSpaces            = 16
+	BusTypeNvme              = 17
+	BusTypeMax               = 18
+	BusTypeMaxReserved       = 0x7F
 )
 
 // STORAGE_QUERY_TYPE values
 const (
-	PropertyStandardQuery = iota
-	PropertyExistsQuery
-	PropertyMaskQuery
-	PropertyQueryMaxDefined
+	PropertyStandardQuery   = 0
+	PropertyExistsQuery     = 1
+	PropertyMaskQuery       = 2
+	PropertyQueryMaxDefined = 3
 )
 
 // STORAGE_PROPERTY_ID values
 const (
-	StorageDeviceProperty = iota
-	StorageAdapterProperty
-	StorageDeviceIdProperty
-	StorageDeviceUniqueIdProperty
-	StorageDeviceWriteCacheProperty
-	StorageMiniportProperty
-	StorageAccessAlignmentProperty
-	StorageDeviceSeekPenaltyProperty
-	StorageDeviceTrimProperty
-	StorageDeviceWriteAggregationProperty
-	StorageDeviceDeviceTelemetryProperty
-	StorageDeviceLBProvisioningProperty
-	StorageDevicePowerProperty
-	StorageDeviceCopyOffloadProperty
-	StorageDeviceResiliencyProperty
-	StorageDeviceMediumProductType
+	StorageDeviceProperty                 = 0
+	StorageAdapterProperty                = 1
+	StorageDeviceIdProperty               = 2
+	StorageDeviceUniqueIdProperty         = 3
+	StorageDeviceWriteCacheProperty       = 4
+	StorageMiniportProperty               = 5
+	StorageAccessAlignmentProperty        = 6
+	StorageDeviceSeekPenaltyProperty      = 7
+	StorageDeviceTrimProperty             = 8
+	StorageDeviceWriteAggregationProperty = 9
+	StorageDeviceDeviceTelemetryProperty  = 10
+	StorageDeviceLBProvisioningProperty   = 11
+	StorageDevicePowerProperty            = 12
+	StorageDeviceCopyOffloadProperty      = 13
+	StorageDeviceResiliencyProperty       = 14
+	StorageDeviceMediumProductType        = 15
 )
 
 // STREAM_INFO_LEVELS
@@ -3802,15 +3802,15 @@ const (
 const (
 	// PoAc: the computer is powered by an AC power source (or similar, such as
 	// a laptop powered by a 12V automotive adapter).
-	PoAc = iota
+	PoAc = 0
 	// PoDc: the system is receiving power from built-in batteries.
-	PoDc
+	PoDc = 1
 	// PoHot: the computer is powered by a short-term power source such as a UPS
 	// device.
-	PoHot
+	PoHot = 2
 	// PoConditionMaximum: values equal to or greater than this value indicate
 	// an out of range value.
-	PoConditionMaximum
+	PoConditionMaximum = 3
 )
 
 const (
