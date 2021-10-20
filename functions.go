@@ -26,6 +26,7 @@ var (
 	dxva2    = syscall.NewLazyDLL("dxva2.dll")
 	msimg32  = syscall.NewLazyDLL("msimg32.dll")
 	mpr      = syscall.NewLazyDLL("mpr.dll")
+	shlwapi  = syscall.NewLazyDLL("shlwapi.dll")
 
 	registerClassEx               = user32.NewProc("RegisterClassExW")
 	loadIcon                      = user32.NewProc("LoadIconW")
@@ -426,6 +427,8 @@ var (
 	wNetAddConnection2    = mpr.NewProc("WNetAddConnection2W")
 	wNetAddConnection3    = mpr.NewProc("WNetAddConnection3W")
 	wNetCancelConnection2 = mpr.NewProc("WNetCancelConnection2W")
+
+	shCreateMemStream = shlwapi.NewProc("SHCreateMemStream")
 )
 
 // RegisterClassEx sets the Size of the WNDCLASSEX automatically.
@@ -3584,6 +3587,14 @@ func CreateStreamOnHGlobal(hGlobal HGLOBAL, fDeleteOnRelease bool) *IStream {
 	}
 
 	return stream
+}
+
+func SHCreateMemStream(data []byte) *IStream {
+	ret, _, _ := shCreateMemStream.Call(
+		uintptr(unsafe.Pointer(&data[0])),
+		uintptr(len(data)),
+	)
+	return (*IStream)(unsafe.Pointer(ret))
 }
 
 func VariantInit(v *VARIANT) {
