@@ -428,7 +428,8 @@ var (
 	wNetAddConnection3    = mpr.NewProc("WNetAddConnection3W")
 	wNetCancelConnection2 = mpr.NewProc("WNetCancelConnection2W")
 
-	shCreateMemStream = shlwapi.NewProc("SHCreateMemStream")
+	shCreateMemStream   = shlwapi.NewProc("SHCreateMemStream")
+	shIsUserAnAdminProc = shell32.NewProc("IsUserAnAdmin")
 )
 
 // RegisterClassEx sets the Size of the WNDCLASSEX automatically.
@@ -3595,6 +3596,11 @@ func SHCreateMemStream(data []byte) *IStream {
 		uintptr(len(data)),
 	)
 	return (*IStream)(unsafe.Pointer(ret))
+}
+
+func SHIsUserAnAdmin() bool {
+	ret, _, _ := shIsUserAnAdminProc.Call()
+	return ret != 0
 }
 
 func VariantInit(v *VARIANT) {
