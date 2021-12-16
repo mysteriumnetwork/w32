@@ -1,3 +1,3 @@
-module github.com/mysteriumnetwork/w32/tags
+module github.com/gonutz/w32
 
 go 1.11
